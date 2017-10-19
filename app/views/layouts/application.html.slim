@@ -3,14 +3,24 @@ html
   head
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     title
-      = content_for?(:title) ? yield(:title) : 'Helpyourneighbor'
+      = content_for?(:title) ? yield(:title) : 'Progress Boards'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Helpyourneighbor'}"
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => 'reload'
     == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
     == csrf_meta_tags
   body
     header
-      == render 'layouts/navigation'
-    main[role="main"]
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand href="#"
+          = image_tag('logo.png', class: 'logo')
+        button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
+          span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a.nav-link href="#" 
+                | Boards
+                span.sr-only (current)
+    .container-fluid
       == render 'layouts/messages'
       == yield

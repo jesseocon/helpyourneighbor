@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
   root to: 'visitors#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/pre-enroll', to: 'visitors#pre_enroll'
+  get '/early_access', to: 'visitors#early_access'
+
+  resources :webhooks
+  resources :courses do
+    resources :boards
+  end
 end
