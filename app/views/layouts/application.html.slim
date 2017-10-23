@@ -17,10 +17,15 @@ html
           span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.mr-auto
-            li.nav-item
-              a.nav-link href="#" 
+            -ctrl_name = controller.controller_name
+            -ctrl_action = controller.action_name
+            li class=(active_link?('visitors', 'index') ? "nav-item active" : "nav-item")
+              a.nav-link href="/" 
                 | Boards
                 span.sr-only (current)
+            li class=(active_link?('visitors', 'schedule') ? "nav-item active" : "nav-item")
+              a.nav-link href="/schedule"
+                | Schedule
     .container-fluid
       == render 'layouts/messages'
       == yield
